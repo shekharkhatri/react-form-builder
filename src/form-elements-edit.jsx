@@ -9,6 +9,7 @@ import { Editor } from 'react-draft-wysiwyg';
 import DynamicOptionList from './dynamic-option-list';
 import { get } from './stores/requests';
 import ID from './UUID';
+import Conditionals from "./form-edit-elements/Conditionals";
 
 const toolbar = {
   options: ['inline', 'list', 'textAlign', 'fontSize', 'link', 'history'],
@@ -372,6 +373,13 @@ export default class FormElementsEdit extends React.Component {
             preview={this.props.preview}
             element={this.props.element}
             key={this.props.element.options.length} />
+        }
+        { this.props.element.canHaveConditionals &&
+          <Conditionals
+            element={this.props.element}
+            updateElement={this.props.updateElement}
+            preview={this.props.preview}
+            data={this.props.preview.state.data} />
         }
       </div>
     );

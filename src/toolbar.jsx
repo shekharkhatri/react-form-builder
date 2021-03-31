@@ -306,6 +306,7 @@ export default class Toolbar extends React.Component {
     elementOptions.canHaveOptionCorrect = item.canHaveOptionCorrect !== false;
     elementOptions.canHaveOptionValue = item.canHaveOptionValue !== false;
     elementOptions.canPopulateFromApi = item.canPopulateFromApi !== false;
+    elementOptions.canHaveConditionals = item.canHaveConditionals !== true;
 
     if (item.class_name) {
       elementOptions.class_name = item.class_name;
