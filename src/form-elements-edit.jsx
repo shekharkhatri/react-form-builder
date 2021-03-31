@@ -9,6 +9,7 @@ import { Editor } from 'react-draft-wysiwyg';
 import DynamicOptionList from './dynamic-option-list';
 import { get } from './stores/requests';
 import ID from './UUID';
+import Validations from './form-edit-elements/validations';
 
 const toolbar = {
   options: ['inline', 'list', 'textAlign', 'fontSize', 'link', 'history'],
@@ -117,7 +118,7 @@ export default class FormElementsEdit extends React.Component {
     const this_checked_alternate_form = this.props.element.hasOwnProperty('alternateForm') ? this.props.element.alternateForm : false;
 
     const {
-      canHavePageBreakBefore, canHaveAlternateForm, canHaveDisplayHorizontal, canHaveOptionCorrect, canHaveOptionValue,
+      canHavePageBreakBefore, canHaveAlternateForm, canHaveDisplayHorizontal, canHaveOptionCorrect, canHaveOptionValue, canHaveValidation
     } = this.props.element;
 
     const this_files = this.props.files.length ? this.props.files : [];
@@ -372,6 +373,14 @@ export default class FormElementsEdit extends React.Component {
             preview={this.props.preview}
             element={this.props.element}
             key={this.props.element.options.length} />
+        }
+        { this.props.element.canHaveValidation &&
+        <Validations
+          data={this.props.preview.state.data}
+          updateElement={this.props.updateElement}
+          preview={this.props.preview}
+          element={this.props.element}
+          key={this.props.element.key} />
         }
       </div>
     );
