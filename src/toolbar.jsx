@@ -300,6 +300,8 @@ export default class Toolbar extends React.Component {
     elementOptions.canHavePageBreakBefore = item.canHavePageBreakBefore !== false;
     elementOptions.canHaveAlternateForm = item.canHaveAlternateForm !== false;
     elementOptions.canHaveDisplayHorizontal = item.canHaveDisplayHorizontal !== false;
+    elementOptions.canHaveValidation = item.canHaveValidation !== true;
+
     if (elementOptions.canHaveDisplayHorizontal) {
       elementOptions.inline = item.inline;
     }
@@ -349,6 +351,13 @@ export default class Toolbar extends React.Component {
       } else {
         elementOptions.options = Toolbar._defaultItemOptions(elementOptions.element);
       }
+    }
+
+    if (elementOptions.canHaveValidation) {
+      elementOptions.validationRules = [{
+        key: ID.uuid(),
+        rule: '0',
+      }];
     }
 
     return elementOptions;
