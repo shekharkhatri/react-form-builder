@@ -377,6 +377,7 @@ export default class FormElementsEdit extends React.Component {
         }
         { this.props.element.canHaveConditionals &&
           <Conditionals
+            key={this.props.element.key}
             element={this.props.element}
             updateElement={this.props.updateElement}
             preview={this.props.preview}

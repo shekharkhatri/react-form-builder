@@ -359,6 +359,14 @@ export default class Toolbar extends React.Component {
         rule: '0',
       }];
     }
+    if (elementOptions.canHaveConditionals) {
+      elementOptions.conditionalRules = [{
+        key: ID.uuid(),
+        field: '0',
+        operator: '0',
+        value: '',
+      }];
+    }
 
     return elementOptions;
   }
